@@ -2,7 +2,8 @@ Text to speech
 ====
 
 This repo aim to push TTS model into production using torchserve and AWS EC2. CI/CD and Container Ochestration will also used to make sure product works well.
-`git clone https://github.com/manhph2211/TTSSVC && cd TTSSVC`
+
+```git clone https://github.com/manhph2211/TTSSVC && cd TTSSVC```
 
 # Backend 
 
@@ -26,8 +27,8 @@ pip install -r requirements.txt
 
  * Generate the model archive for waveglow speech synthesis model using following command
 
-    ```bash
-    ./create_mar.sh
+    ```
+    bash ./create_mar.sh
     ```
 
  * Register the model on TorchServe using the above model archive file
