@@ -2,10 +2,14 @@ Text to speech
 ====
 
 This repo aim to push TTS model into production using torchserve and AWS EC2. CI/CD and Container Ochestration will also used to make sure product works well.
+`git clone https://github.com/manhph2211/TTSSVC && cd TTSSVC`
+
+# Backend 
 
 ## Activate Environment
 
 ```
+cd backend
 conda create -n serve python=3.8
 conda activate serve
 ```
@@ -39,4 +43,12 @@ pip install -r requirements.txt
     ```
     python client.py
     ```
+ 
+# Frontend
 
+I used React for TTS demo and deploy product using EC2. 
+ ```
+ cd frontend
+ npm install 
+ npm start
+ ```
