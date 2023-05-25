@@ -3,14 +3,14 @@ Text to speech
 
 This repo aim to push TTS model into production using torchserve and AWS EC2. CI/CD and Container Ochestration will also used to make sure product works well.
 
-# Activate Environment
+## Activate Environment
 
 ```
 conda create -n serve python=3.8
 conda activate serve
 ```
 
-# Install Dependencies
+## Install Dependencies
 
 ```
 pip install torch==1.7.1+cu110 -f https://download.pytorch.org/whl/torch_stable.html
@@ -18,7 +18,7 @@ pip install torchserve torch-model-archiver torch-workflow-archiver
 pip install -r requirements.txt
 ```
 
-# Serve the WaveGlow speech synthesis model on TorchServe
+## Serve the WaveGlow speech synthesis model on TorchServe
 
  * Generate the model archive for waveglow speech synthesis model using following command
 
