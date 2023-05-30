@@ -65,4 +65,4 @@ kubectl apply -f service.yaml
 
 # Frontend Service
 
-I used React for developing my TTS demo. Currently I will not share this LeuLeu :)) :smiley:
+I used React for developing my TTS demo. I won't share this for now LeuLeu :)) :smiley:
