@@ -1,3 +1,8 @@
+backend/*.zip 
+backend/*.pth
+backend/model_store
+backend/log
+frontend/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -14,6 +14,9 @@ cp -r /tmp/DeepLearningExamples-torchhub/PyTorch/SpeechSynthesis/* PyTorch/Speec
 zip -r tacotron.zip PyTorch
 wget https://api.ngc.nvidia.com/v2/models/nvidia/tacotron2_pyt_ckpt_fp32/versions/19.09.0/files/nvidia_tacotron2pyt_fp32_20190427 -O nvidia_tacotron2pyt_fp32_20190427.pth
 wget https://api.ngc.nvidia.com/v2/models/nvidia/waveglow_ckpt_fp32/versions/19.09.0/files/nvidia_waveglowpyt_fp32_20190427 -O nvidia_waveglowpyt_fp32_20190427.pth
-python convert.py
 torch-model-archiver --model-name waveglow_synthesizer --version 1.0 --model-file waveglow_model.py --serialized-file nvidia_waveglowpyt_fp32_20190427.pth --handler waveglow_handler.py --extra-files tacotron.zip,nvidia_tacotron2pyt_fp32_20190427.pth -r requirements.txt
-# rm -rf nvidia_*
+rm -rf nvidia_*
+rm *.zip
+mkdir model_store
+mv waveglow_synthesizer.mar model_store/
+torchserve --start --model-store model_store --models waveglow_synthesizer.mar
