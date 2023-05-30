@@ -1,7 +1,7 @@
 Text to speech Service
 ====
 
-This repo aim to push a simple TTS model into production using torchserve and kubernetes. I also add Jenkine file for a simple CI/CD pipeline. I always aim to build clear template for you to even make better product :smile: Check out my previous [template](https://github.com/manhph2211/Image-Generation-App) in which I play with Jax and Docker-Compose if you interested. 
+This repo aim to push a simple TTS model into production using torchserve and kubernetes. I also add Jenkine file for a simple CI/CD pipeline. I always aim to build clear template for you to even make better product :smile: Check out my previous [template](https://github.com/manhph2211/Image-Generation-App) in which I play with Jax and Docker-Compose if you're interested. 
 
 ```git clone https://github.com/manhph2211/TTSSVC && cd TTSSVC```
 
