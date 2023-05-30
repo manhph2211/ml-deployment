@@ -63,6 +63,6 @@ kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml 
 ```
 
-# Frontend
+# Frontend Service
 
 I used React for developing my TTS demo. Currently I will not share this LeuLeu :)) :smiley:
