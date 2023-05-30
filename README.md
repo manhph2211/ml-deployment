@@ -1,7 +1,7 @@
-Text to speech 
+Text to speech Service
 ====
 
-This repo aim to push TTS model into production using torchserve and kubernetes. 
+This repo aim to push a simple TTS model into production using torchserve and kubernetes. I always aim to build clear template for you to even make better product :smile: Check out my previous [template](https://github.com/manhph2211/Image-Generation-App) in which I play with Jax and Docker-Compose if you interested.
 
 ```git clone https://github.com/manhph2211/TTSSVC && cd TTSSVC```
 
@@ -63,3 +63,6 @@ kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml 
 ```
 
+# Frontend
+
+I used React for developing my TTS demo. Currently I will not share this liuliu :smiley:
