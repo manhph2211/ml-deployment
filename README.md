@@ -11,8 +11,8 @@ This repo aim to push a simple TTS model into production using torchserve and ku
 
 ```
 cd backend
-conda create -n serve python=3.8
-conda activate serve
+conda create -n tts_app python=3.8
+conda activate tts_app
 ```
 
 ## Install Dependencies
@@ -65,4 +65,4 @@ kubectl apply -f service.yaml
 
 # Frontend
 
-I used React for developing my TTS demo. Currently I will not share this liuliu :smiley:
+I used React for developing my TTS demo. Currently I will not share this LeuLeu :)) :smiley:
