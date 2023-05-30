@@ -35,7 +35,7 @@ pip install -r requirements.txt
    torchserve --start --model-store model_store --models waveglow_synthesizer.mar --ts-config config.properties
    ```
 
-* Check API:
+* Check API and see the audio output:
 
    ```
    python client.py
