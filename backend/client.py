@@ -1,7 +1,7 @@
 import requests
 
 files = {'data': open('sample_text.txt','rb')}
-response = requests.post('http://localhost:8080/predictions/waveglow_synthesizer', files=files)
+response = requests.post('http://localhost:8083ß/predictions/waveglow_synthesizer', files=files)
 data = response.content
 
 with open('audio.wav', 'wb') as audio_file:

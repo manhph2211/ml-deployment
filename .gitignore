@@ -1,8 +1,11 @@
 backend/*.zip 
 backend/*.pth
 backend/model_store
+backend/Pytorch
 backend/log
-frontend/
+frontend/public
+frontend/src
+frontend/node_modules
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

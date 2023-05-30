@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+  labels:
+    app: speechstudio
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: speechstudio
+  template:
+    metadata:
+      labels:
+        app: speechstudio 
+    spec:
+      containers:
+      - name: speechstudio
+        image: maxph21/speechstudio
+        ports:
+        - containerPort: 3000

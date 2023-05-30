@@ -19,4 +19,3 @@ rm -rf nvidia_*
 rm *.zip
 mkdir model_store
 mv waveglow_synthesizer.mar model_store/
-torchserve --start --model-store model_store --models waveglow_synthesizer.mar

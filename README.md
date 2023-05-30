@@ -18,32 +18,28 @@ conda activate serve
 ## Install Dependencies
 
 ```
-pip install torch==1.7.1+cu110 -f https://download.pytorch.org/whl/torch_stable.html
-pip install torchserve torch-model-archiver torch-workflow-archiver
+pip install torch==2.0.0+cu118 -f https://download.pytorch.org/whl/torch_stable.html
 pip install -r requirements.txt
 ```
 
 ## Serve the WaveGlow speech synthesis model on TorchServe
 
- * Generate the model archive for waveglow speech synthesis model using following command
+* Generate the model archive for waveglow speech synthesis model using following command
 
-    ```
-    bash ./create_mar.sh
-    ```
+   ```
+   bash ./create_mar.sh
+   ```
 
- * Register the model on TorchServe using the above model archive file
+* Run torchserve API:
+   ```
+   torchserve --start --model-store model_store --models waveglow_synthesizer.mar --ts-config config.properties
+   ```
 
-    ```bash
-    mkdir model_store
-    mv waveglow_synthesizer.mar model_store/
-    torchserve --start --model-store model_store --models waveglow_synthesizer.mar
-    ```
+* Run inference and download audio output using python script (on another terminal):
 
-  * Run inference and download audio output using python script (on another terminal):
-
-    ```
-    python client.py
-    ```
+   ```
+   python client.py
+   ```
  
 # Frontend
 

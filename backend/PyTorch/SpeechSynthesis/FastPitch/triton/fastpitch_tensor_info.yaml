@@ -1,3 +1,0 @@
-tensor_names:
-  inputs: [text_padded, input_lengths]
-  outputs: [mel_padded, output_lengths, dur_padded, pitch_padded]
