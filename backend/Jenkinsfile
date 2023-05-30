@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    dockerimagename = "maxph21/speechstudio"
+    dockerimagename = "user/app"
     dockerImage = ""
   }
 
@@ -11,7 +11,7 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git branch: 'main', credentialsId: 'speechstudiov3', url: 'https://github.com/manhph2211/TTSDemo'
+        git branch: 'main', credentialsId: 'github', url: 'https://github.com/manhph2211/TTSSVC'
       }
     }
 

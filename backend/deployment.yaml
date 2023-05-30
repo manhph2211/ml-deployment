@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: deployment
   labels:
-    app: speechstudio
+    app: app
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: speechstudio
+      app: app
   template:
     metadata:
       labels:
-        app: speechstudio 
+        app: app 
     spec:
       containers:
-      - name: speechstudio
-        image: maxph21/speechstudio
+      - name: app
+        image: user/app
         ports:
-        - containerPort: 3000
+        - containerPort: 8083

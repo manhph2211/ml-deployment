@@ -1,11 +1,11 @@
 Text to speech 
 ====
 
-This repo aim to push TTS model into production using torchserve and AWS EC2. CI/CD and Container Ochestration will also used to make sure product works well.
+This repo aim to push TTS model into production using torchserve and kubernetes. 
 
 ```git clone https://github.com/manhph2211/TTSSVC && cd TTSSVC```
 
-# Backend 
+# Backend Service 
 
 ## Activate Environment
 
@@ -24,7 +24,7 @@ pip install -r requirements.txt
 
 ## Serve the WaveGlow speech synthesis model on TorchServe
 
-* Generate the model archive for waveglow speech synthesis model using following command
+* Generate the model archive for waveglow speech synthesis model:
 
    ```
    bash ./create_mar.sh
@@ -35,17 +35,31 @@ pip install -r requirements.txt
    torchserve --start --model-store model_store --models waveglow_synthesizer.mar --ts-config config.properties
    ```
 
-* Run inference and download audio output using python script (on another terminal):
+* Check API:
 
    ```
    python client.py
    ```
- 
-# Frontend
 
-I used React for TTS demo and deploy product using EC2. 
- ```
- cd frontend
- npm install 
- npm start
- ```
+## Deploy on Kubernetes
+
+If you want to further deploy your app on Kubernetes Clusters, you can first install the Kubernetes command-line tool, kubectl, allows you to run commands against Kubernetes clusters.
+
+Next, adjust the config files (kubeconfig.yaml, deployment.yaml, service.yaml) to yours
+
+Then you need to build and push your image into dockerhub:
+
+```
+docker login
+docker build -t app . 
+docker tag app user/app 
+docker push user/app
+```
+
+
+```
+export KUBECONFIG=kubeconfig.yaml 
+kubectl apply -f deployment.yaml 
+kubectl apply -f service.yaml 
+```
+

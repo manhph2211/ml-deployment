@@ -3,14 +3,13 @@ kind: Service
 metadata:
   name: service
   annotations: 
-    service.beta.kubernetes.io/linode-loadbalancer-throttle: "4"
 spec:
   selector:
-    app: speechstudio
+    app: app
   sessionAffinity: None
   type: LoadBalancer
   ports:
   - name: http
     protocol: TCP
-    port: 3000
-    targetPort: 3000
+    port: 8083
+    targetPort: 8083
