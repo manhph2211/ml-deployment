@@ -67,7 +67,16 @@ kubectl apply -f service.yaml
 
 I used React for developing my TTS demo. I won't share this for now LeuLeu :)) :smiley:
 
+Anyway, run this for the app: 
+
 ```
 cd frontend
 npm i  && npm start
+```
+
+or :
+
+```
+docker build -t ttsdemo .
+docker run -p 3000:3000 ttsdemo
 ```
