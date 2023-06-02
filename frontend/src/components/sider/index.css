@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+._2a97v {
+  background-color: crimson;
+}
+
+._mra1C {
+  background-color: white;
+}
+
+._13dNw {
+  width: 250px;
+  height: 100vh;
+  background-color: deepskyblue;
+  color: white;
+  position: fixed;
+  left: 0;
+  top: 0;
+  text-align: center;
+  transition: all .3s ease-in-out;
+}
+
+._VrCvP {
+  width: 95%;
+  padding: 10px 0;
+  padding-left: 12px;
+  background-color: deepskyblue;
+  cursor: pointer;
+  text-align: left;
+}
+
+._VrCvP:hover {
+  background-color: #0377DA;
+  padding: 14px 0;
+  padding-left: 12px;
+  transition: all .3s ease-in-out;
+}
+
+._2Vept {
+  padding-right: 10px;
+  display: inline-block;
+  width: 20%;
+  font-size: 15px;
+}
+
+._26ojv {
+  background-color: #3960D0;
+  color: white;
+}
+
+._2nNpb:hover {
+  background-color: #609BEB;
+  color: white;
+}
+
+._36YqV {
+  background-color: #FFFEFF;
+  color: black;
+}
+
+._8tJF8:hover {
+  background-color: #F6F6F6;
+}
+
+._2Ll57 {
+  background-color: #1c1e2a;
+  color: white;
+}
+
+._3HbC6:hover {
+  background-color: #2C2F3E;
+  color: white;
+}
+
+._GubVm {
+  text-align: left;
+  cursor: pointer;
+}
+
+._3ow2- {
+  margin: 0 1em;
+}
+
+._2fnX0 {
+  display: none;
+}
+
+._-s3Rh {
+  display: block;
+  position: relative;
+}
+
+._3qnVN {
+  width: 100px;
+  margin-top: 1em;
+}
+
+._2_oI1 {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+._2Q5t5 {
+  width: 85px;
+}
+
+input {
+  padding: 12px 20px;
+  margin: 15px 0;
+  box-sizing: border-box;
+}
+
+._17SmE {
+  left: 0;
+}
+
+._1NTmL {
+  right: 0;
+}
+
+._1vjRi {
+  background-color: #FD7E65;
+  color: white;
+}
+
+._2PHvo:hover {
+  background-color: #FD9768;
+}
+
+._1tllo {
+  background-color: #A771E4;
+  color: white;
+}
+
+._lbp0_:hover {
+  background-color: #E26FCF;
+}
+
+._2maJj {
+  background-color: #1DA4F4;
+  color: white;
+}
+
+._1NfpZ:hover {
+  background-color: #16BCDE;
+}
+._2TMpC {
+  float: right;
+}

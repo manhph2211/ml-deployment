@@ -74,7 +74,7 @@ cd frontend
 npm i  && npm start
 ```
 
-or :
+or with docker:
 
 ```
 docker build -t ttsdemo .
