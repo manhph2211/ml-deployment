@@ -1,0 +1,60 @@
+
+.custom-text {
+    background-color: white;
+    margin-top: 20px;
+    margin-left: 5px;
+    cursor: pointer;
+    align-items: center;
+    overflow-y: scroll;
+    color:  black;
+    font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+    width: 100%;
+  }
+ 
+ .custom-button {
+    margin-top: 10px;
+    align-items: center;
+    border-radius: 10px;
+ } 
+
+  .custom-audio::-webkit-media-controls-panel {
+    background-color: white; 
+    border-radius: 0px;
+  }
+  
+  .audio-wrapper {
+    display: flex;
+    margin-top: 5px;
+  }
+  
+  audio { 
+    height: 40px; 
+    width: 100%; 
+  }
+  
+  .choose_file {
+    /* width: 87%; */
+    display: flex;  
+    margin-top: 15px;
+  }
+  
+  body ::-webkit-scrollbar,
+  body ::-webkit-scrollbar-track {
+    background-color: transparent;
+    height: 18px;
+    width: 18px;
+  }
+  body ::-webkit-scrollbar-thumb {
+    background: hsla(0, 0%, 9%, 0.3);
+    background-clip: padding-box;
+    border: 6px solid transparent;
+    border-radius: 10px;
+    min-height: 1.5rem;
+  }
+  
+  body ::-webkit-scrollbar,
+  body ::-webkit-scrollbar-track {
+    background-color: transparent;
+    height: 18px;
+    width: 18px;
+  }
