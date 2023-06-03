@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@mui/material/Button"
 import TextField from '@mui/material/TextField';
@@ -12,6 +12,7 @@ function TextBox() {
   const [blocks, setBlocks] = useState(['']);
   const [backgroundAudioUrl, setBackgroundAudioUrl] =  useState(null);
   const [speech, setSpeech] = useState();
+  const activeBlockRef = useRef(null);
 
 
   const handleEnd = () => {
@@ -44,6 +45,12 @@ function TextBox() {
     const updatedBlocks = [...blocks];
     updatedBlocks.splice(index, 1);
     setBlocks(updatedBlocks);
+  };
+
+  const handleKeyDown = (event, index) => {
+    if (blocks[index] === '' && event.key === 'Delete') {
+      setBlocks((prevBlocks) => prevBlocks.filter((_, i) => i !== index));
+    }
   };
 
   const addBlock = () => {
@@ -80,8 +87,15 @@ function TextBox() {
             placeholder="Hello, I am Max."
             value={block}
             onChange={(e) => updateBlock(index, e.target.value)}
+            onKeyDown={(e) => handleKeyDown(e, index)}
             fullWidth
             InputProps={{ sx: { borderRadius: 5 } }}
+            inputRef={(ref) => {
+              if (activeBlockRef.current === index) {
+                ref.focus();
+              }
+            }}
+
           />
       ))}
 
