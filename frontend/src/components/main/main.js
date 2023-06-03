@@ -51,11 +51,14 @@ function TextBox() {
   };
 
   const updateBlock = (index, value) => {
+    // Split the text into sentences
+    const sentences = value.split('.').map((sentence) => sentence.trim()).filter(Boolean);
+
+    // Update the blocks with the sentences
     const updatedBlocks = [...blocks];
-    updatedBlocks[index] = value;
+    updatedBlocks.splice(index, 1, ...sentences);
     setBlocks(updatedBlocks);
   };
-
   return (
       <Grid>
       <Grid className="audio-wrapper">
