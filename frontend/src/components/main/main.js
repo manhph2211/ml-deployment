@@ -53,31 +53,34 @@ function TextBox() {
     updatedBlocks.splice(index, 1, ...sentences);
     setBlocks(updatedBlocks);
   };
-
+  
   const handleTextToSpeech = async () => {
-    const textToSpeechApiUrl = 'http://localhost:8083/predictions/waveglow_synthesizer'; 
-    const texts = blocks.filter((block) => block !== ''); 
-
+    const textToSpeechApiUrl = 'http://localhost:8083/predictions/waveglow_synthesizer'; // Replace with the actual API endpoint
+  
+    const texts = blocks.filter((block) => block !== ''); // Exclude empty blocks
+  
     try {
+      const formData = new FormData();
+      texts.forEach((text, index) => {
+        formData.append(`data${index}`, text);
+      });
+  
       const response = await fetch(textToSpeechApiUrl, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ texts }),
+        body: formData,
       });
-
+  
       if (!response.ok) {
         throw new Error('Text-to-speech request failed.');
       }
-
-      const audioData = await response.blob();
-
+  
+      const data = await response.content();
       console.log('Text-to-speech request successful.');
     } catch (error) {
       console.error('Error:', error.message);
     }
   };
+  
 
   return (
       <Grid>
@@ -114,7 +117,7 @@ function TextBox() {
       ))}
 
       <Button className="custom-button" variant="contained" color="primary" onClick={addBlock}>
-        Add Block
+        Add Text
       </Button>
     </Grid>
 
