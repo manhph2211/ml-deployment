@@ -2,9 +2,7 @@ import React, { useState, useRef } from "react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@mui/material/Button"
 import TextField from '@mui/material/TextField';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { IconButton } from '@mui/material';
-
+import Box from '@mui/material/Box';
 import "./main.css";
 
 function TextBox() {
@@ -13,7 +11,6 @@ function TextBox() {
   const [backgroundAudioUrl, setBackgroundAudioUrl] =  useState(null);
   const [speech, setSpeech] = useState();
   const activeBlockRef = useRef(null);
-
 
   const handleEnd = () => {
     if (backgroundAudioUrl)
@@ -38,9 +35,22 @@ function TextBox() {
   };
 
   const handleKeyDown = (event, index) => {
-    if (blocks[index] === '' && event.key === 'Delete') {
+    if (event.key === 'Delete' && blocks[index] === '' && blocks.length > 1) {
       setBlocks((prevBlocks) => prevBlocks.filter((_, i) => i !== index));
     }
+    else if (event.key === 'Enter') {
+      event.preventDefault();
+
+      if (index === blocks.length - 1) {
+        setBlocks([...blocks, '']);
+      }
+
+      const nextInput = document.getElementById(`block-${index + 1}`);
+      if (nextInput) {
+        nextInput.focus();
+      }
+    }
+
   };
 
   const addBlock = () => {
@@ -53,7 +63,7 @@ function TextBox() {
     updatedBlocks.splice(index, 1, ...sentences);
     setBlocks(updatedBlocks);
   };
-  
+
   const handleTextToSpeech = async () => {
     const textToSpeechApiUrl = 'http://localhost:8083/predictions/waveglow_synthesizer'; // Replace with the actual API endpoint
   
@@ -86,7 +96,9 @@ function TextBox() {
       <Grid>
       <Grid className="audio-wrapper">
         <Button value={text} onClick={handleTextToSpeech} color="inherit"> Play </Button>
-
+        <Button color="inherit" onClick={addBlock}>
+        Text
+        </Button>
         <audio className="custom-audio"
           src={speech}
           controls
@@ -97,28 +109,25 @@ function TextBox() {
       </Grid>
       <Grid container spacing={0} direction="column" alignItems="center" style={{ minHeight: '100vh' }}>
       {blocks.map((block, index) => (
-          <TextField
-            type="text"
-            className="custom-text"
-            placeholder={`Sentence ${index + 1}`}
 
-            value={block}
-            onChange={(e) => updateBlock(index, e.target.value)}
-            onKeyDown={(e) => handleKeyDown(e, index)}
-            fullWidth
-            InputProps={{ sx: { borderRadius: 5 } }}
-            inputRef={(ref) => {
-              if (activeBlockRef.current === index) {
-                ref.focus();
-              }
-            }}
+            <TextField
+              size="small"
+              type="text"
+              className="custom-text"
+              placeholder={`Sentence ${index + 1}`}
 
-          />
+              value={block}
+              onChange={(e) => updateBlock(index, e.target.value)}
+              onKeyDown={(e) => handleKeyDown(e, index)}
+              fullWidth
+              InputProps={{ sx: { borderRadius: 2 } }}
+              inputRef={(ref) => {
+                if (activeBlockRef.current === index) {
+                  ref.focus();
+                }
+              }}
+            />
       ))}
-
-      <Button className="custom-button" variant="contained" color="primary" onClick={addBlock}>
-        Add Text
-      </Button>
     </Grid>
 
       </Grid>
