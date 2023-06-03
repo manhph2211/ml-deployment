@@ -37,16 +37,6 @@ function TextBox() {
     setBackgroundAudioUrl(new Audio(URL.createObjectURL(event.target.files[0])));
   };
 
-
-  const handlePredictClick = () => {
-  };
-
-  const deleteBlock = (index) => {
-    const updatedBlocks = [...blocks];
-    updatedBlocks.splice(index, 1);
-    setBlocks(updatedBlocks);
-  };
-
   const handleKeyDown = (event, index) => {
     if (blocks[index] === '' && event.key === 'Delete') {
       setBlocks((prevBlocks) => prevBlocks.filter((_, i) => i !== index));
@@ -54,22 +44,45 @@ function TextBox() {
   };
 
   const addBlock = () => {
-    setBlocks([...blocks, '']); // Add an empty block to the array
+    setBlocks([...blocks, '']); 
   };
 
   const updateBlock = (index, value) => {
-    // Split the text into sentences
     const sentences = value.split('.').map((sentence) => sentence.trim()).filter(Boolean);
-
-    // Update the blocks with the sentences
     const updatedBlocks = [...blocks];
     updatedBlocks.splice(index, 1, ...sentences);
     setBlocks(updatedBlocks);
   };
+
+  const handleTextToSpeech = async () => {
+    const textToSpeechApiUrl = 'http://localhost:8083/predictions/waveglow_synthesizer'; 
+    const texts = blocks.filter((block) => block !== ''); 
+
+    try {
+      const response = await fetch(textToSpeechApiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ texts }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Text-to-speech request failed.');
+      }
+
+      const audioData = await response.blob();
+
+      console.log('Text-to-speech request successful.');
+    } catch (error) {
+      console.error('Error:', error.message);
+    }
+  };
+
   return (
       <Grid>
       <Grid className="audio-wrapper">
-        <Button value={text} onClick={handlePredictClick} color="inherit"> Play </Button>
+        <Button value={text} onClick={handleTextToSpeech} color="inherit"> Play </Button>
 
         <audio className="custom-audio"
           src={speech}
@@ -84,7 +97,8 @@ function TextBox() {
           <TextField
             type="text"
             className="custom-text"
-            placeholder="Hello, I am Max."
+            placeholder={`Sentence ${index + 1}`}
+
             value={block}
             onChange={(e) => updateBlock(index, e.target.value)}
             onKeyDown={(e) => handleKeyDown(e, index)}
