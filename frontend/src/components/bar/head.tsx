@@ -13,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
-const pages = ['Products', 'Blog', 'About'];
+const pages = ['Dashboard', 'Blog', 'About'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Head() {

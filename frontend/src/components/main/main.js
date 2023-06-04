@@ -1,16 +1,16 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@mui/material/Button"
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import "./main.css";
+import Dail from "../dial/dial"
 
 function TextBox() {
   const [text, setText] = useState("");
-  const [blocks, setBlocks] = useState(['']);
+  const [blocks, setBlocks] = useState([""]);
   const [backgroundAudioUrl, setBackgroundAudioUrl] =  useState(null);
   const [speech, setSpeech] = useState();
-  const activeBlockRef = useRef(null);
 
   const handleEnd = () => {
     if (backgroundAudioUrl)
@@ -34,33 +34,13 @@ function TextBox() {
     setBackgroundAudioUrl(new Audio(URL.createObjectURL(event.target.files[0])));
   };
 
-  const handleKeyDown = (event, index) => {
-    if (event.key === 'Delete' && blocks[index] === '' && blocks.length > 1) {
-      setBlocks((prevBlocks) => prevBlocks.filter((_, i) => i !== index));
-    }
-    else if (event.key === 'Enter') {
-      event.preventDefault();
-
-      if (index === blocks.length - 1) {
-        setBlocks([...blocks, '']);
-      }
-
-      const nextInput = document.getElementById(`block-${index + 1}`);
-      if (nextInput) {
-        nextInput.focus();
-      }
-    }
-
-  };
-
   const addBlock = () => {
     setBlocks([...blocks, '']); 
   };
 
   const updateBlock = (index, value) => {
-    const sentences = value.split('.').map((sentence) => sentence.trim()).filter(Boolean);
     const updatedBlocks = [...blocks];
-    updatedBlocks.splice(index, 1, ...sentences);
+    updatedBlocks[index] = value;
     setBlocks(updatedBlocks);
   };
 
@@ -93,8 +73,8 @@ function TextBox() {
   
 
   return (
-      <Grid>
-      <Grid className="audio-wrapper">
+      <Box>
+      <Box component="span"  sx={{ p: 1, border: '1px solid grey' }} className="audio-wrapper">
         <Button value={text} onClick={handleTextToSpeech} color="inherit"> Play </Button>
         <Button color="inherit" onClick={addBlock}>
         Text
@@ -106,31 +86,26 @@ function TextBox() {
           onPlay={handlePlay}      
           onEnded={handleEnd}
         />
-      </Grid>
-      <Grid container spacing={0} direction="column" alignItems="center" style={{ minHeight: '100vh' }}>
+        <Dail/>
+      </Box>
+      <Box container spacing={0}  direction="column" alignItems="center" style={{ minHeight: '100vh' }}>
       {blocks.map((block, index) => (
-
             <TextField
-              size="small"
+               size="small"
               type="text"
               className="custom-text"
               placeholder={`Sentence ${index + 1}`}
 
               value={block}
               onChange={(e) => updateBlock(index, e.target.value)}
-              onKeyDown={(e) => handleKeyDown(e, index)}
               fullWidth
               InputProps={{ sx: { borderRadius: 2 } }}
-              inputRef={(ref) => {
-                if (activeBlockRef.current === index) {
-                  ref.focus();
-                }
-              }}
+
             />
       ))}
-    </Grid>
+    </Box>
 
-      </Grid>
+      </Box>
   );
 }
 
