@@ -78,7 +78,7 @@ npm i  && npm start
 
 # Frontend Service
 
-I used React for developing my TTS demo. :smiley:
+I used React for developing my TTS demo curently supporting login, dashboard, tts ... :smiley:
 
 Anyway, run this for the app: 
 
