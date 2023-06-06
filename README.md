@@ -3,6 +3,9 @@ Text to speech Service
 
 This repo aim to push a simple TTS model into production using torchserve and kubernetes. I also add Jenkine file for a simple CI/CD pipeline. I always aim to build clear template for you to even make better product :smile: Check out my previous [template](https://github.com/manhph2211/Image-Generation-App) in which I play with Jax, FastAPI, Streamlit and Docker-Compose if you're interested. 
 
+![image](https://github.com/manhph2211/TTSSVC/assets/61444616/1cfdec96-fbba-4626-9751-c982163f3118)
+
+Okay, get started with cloning this repo: 
 ```git clone https://github.com/manhph2211/TTSSVC && cd TTSSVC```
 
 # Backend Service 
@@ -63,6 +66,16 @@ kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml 
 ```
 
+# MiddleWare Service
+
+For this service, you need to install mongoDB and create your [mongoDB Atlas account](https://www.mongodb.com/atlas/database), adjust file `middleware/src/database/index.js` with your mongoDB atlas username and password. 
+
+This uses expressjs to create TTS API gateway, authen API for login and for TTS audio dashboard API that connected the database. Simply run:
+```
+cd middleware
+npm i  && npm start
+```
+
 # Frontend Service
 
 I used React for developing my TTS demo. :smiley:
@@ -74,9 +87,3 @@ cd frontend
 npm i  && npm start
 ```
 
-or with docker:
-
-```
-docker build -t ttsdemo .
-docker run -p 3000:3000 ttsdemo
-```
