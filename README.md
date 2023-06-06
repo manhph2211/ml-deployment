@@ -8,7 +8,7 @@ This repo aim to push a simple TTS model into production using torchserve and ku
 Okay, get started with cloning this repo: 
 ```git clone https://github.com/manhph2211/TTSSVC && cd TTSSVC```
 
-# Backend Service 
+# Backend  
 
 ## Activate Environment
 
@@ -25,7 +25,7 @@ pip install torch==2.0.0+cu118 -f https://download.pytorch.org/whl/torch_stable.
 pip install -r requirements.txt
 ```
 
-## Serve the WaveGlow speech synthesis model on TorchServe
+## Serve speech synthesis model on TorchServe
 
 * Generate the model archive for waveglow speech synthesis model:
 
@@ -66,7 +66,7 @@ kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml 
 ```
 
-# MiddleWare Service
+# MiddleWare 
 
 For this service, you need to install mongoDB and create your [mongoDB Atlas account](https://www.mongodb.com/atlas/database), adjust file `middleware/src/database/index.js` with your mongoDB atlas username and password. 
 
@@ -76,7 +76,9 @@ cd middleware
 npm i  && npm start
 ```
 
-# Frontend Service
+More at [MiddleWare](https://github.com/manhph2211/TTSSVC/tree/main/middleware)
+
+# Frontend 
 
 I used React for developing my TTS demo curently supporting login, dashboard, tts ... :smiley:
 
