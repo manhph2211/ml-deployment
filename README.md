@@ -81,7 +81,9 @@ More at [MiddleWare](https://github.com/manhph2211/TTSSVC/tree/main/middleware)
 # Frontend 
 
 I used React for developing my TTS demo curently supporting login, dashboard, tts ... :smiley:
+This is how the app looks like:
 
+![image](https://github.com/manhph2211/TTSSVC/assets/61444616/7127216a-ecdf-49af-8c2e-7af24db0ebe6)
 Anyway, run this for the app: 
 
 ```
