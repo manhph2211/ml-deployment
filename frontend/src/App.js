@@ -10,11 +10,11 @@ function App() {
     <div className="App">
       <React.StrictMode>
         <StyledEngineProvider injectFirst>
-          <BrowserRouter>
+          {/* <BrowserRouter>
             <LoginForm/>
-          </BrowserRouter>,
-          {/* <Head />
-          <Tts/> */}
+          </BrowserRouter>, */}
+          <Head />
+          <Tts/>
         </StyledEngineProvider>
       </React.StrictMode>
     </div>
